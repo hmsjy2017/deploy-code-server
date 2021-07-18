@@ -27,7 +27,7 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # RUN code-server --install-extension esbenp.prettier-vscode
 
 # Install apt packages:
-# RUN sudo apt-get install -y ubuntu-make
+RUN sudo apt-get install -y neofetch
 
 # Copy files: 
 # COPY deploy-container/myTool /home/coder/myTool
@@ -35,8 +35,8 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # -----------
 # You can add custom software and dependencies for your environment here. Some examples:
 
-# RUN code-server --install-extension esbenp.prettier-vscode
-# RUN sudo apt-get install -y build-essential
+RUN code-server --install-extension MS-CEINTL.vscode-language-pack-zh-hans
+RUN sudo apt-get install -y build-essential
 # RUN COPY myTool /home/coder/myTool
 
 # Install NodeJS
