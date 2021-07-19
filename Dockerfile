@@ -10,7 +10,7 @@ COPY deploy-container/settings.json .local/share/code-server/User/settings.json
 ENV SHELL=/bin/bash
 
 # Install unzip + rclone (support for remote filesystem)
-RUN sudo apt-get update && sudo apt-get install unzip wget -y; exit 0
+RUN sudo apt-get update && sudo apt-get install apt-utils unzip wget -y
 RUN curl https://rclone.org/install.sh | sudo bash
 
 # Copy rclone tasks to /tmp, to potentially be used
@@ -27,7 +27,7 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # RUN code-server --install-extension esbenp.prettier-vscode
 
 # Install apt packages:
-RUN sudo apt-get install -y neofetch; exit 0
+RUN sudo apt-get install -y neofetch
 
 # Copy files: 
 # COPY deploy-container/myTool /home/coder/myTool
@@ -41,7 +41,7 @@ RUN sudo apt-get install -y build-essential
 
 # Install NodeJS
 RUN sudo curl -fsSL https://deb.nodesource.com/setup_16.x | sudo bash -
-RUN sudo apt-get install -y nodejs; exit 0
+RUN sudo apt-get install -y nodejs
 
 # Install Golang
 RUN wget https://golang.org/dl/go1.16.6.linux-amd64.tar.gz
