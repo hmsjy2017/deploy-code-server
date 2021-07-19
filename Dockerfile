@@ -43,6 +43,13 @@ RUN sudo apt-get install -y build-essential
 RUN sudo curl -fsSL https://deb.nodesource.com/setup_16.x | sudo bash -
 RUN sudo apt-get install -y nodejs
 
+# Install Golang
+RUN wget https://golang.org/dl/go1.16.6.linux-amd64.tar.gz
+RUN sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
+RUN sudo export PATH=$PATH:/usr/local/go/bin
+
+# Install Linuxbrew
+RUN sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Port
 ENV PORT=8080
