@@ -27,7 +27,7 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # RUN code-server --install-extension esbenp.prettier-vscode
 
 # Install apt packages:
-RUN sudo apt-get install -y wget curl tar unzip net-tools neofetch
+RUN sudo apt-get install -y wget tar unzip net-tools neofetch
 
 # Copy files: 
 # COPY deploy-container/myTool /home/coder/myTool
@@ -47,9 +47,6 @@ RUN sudo apt-get install -y nodejs
 RUN wget https://golang.org/dl/go1.16.6.linux-amd64.tar.gz
 RUN sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
 RUN sudo export PATH=$PATH:/usr/local/go/bin
-
-# Install Linuxbrew
-RUN sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Port
 ENV PORT=8080
