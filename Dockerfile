@@ -46,7 +46,7 @@ RUN sudo apt-get install -y nodejs
 # Install Golang
 RUN wget https://golang.org/dl/go1.16.6.linux-amd64.tar.gz
 RUN sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
-RUN sudo export PATH=$PATH:/usr/local/go/bin
+RUN export PATH=$PATH:/usr/local/go/bin
 
 # Port
 ENV PORT=8080
