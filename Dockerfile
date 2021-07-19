@@ -10,8 +10,8 @@ COPY deploy-container/settings.json .local/share/code-server/User/settings.json
 ENV SHELL=/bin/bash
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && \
-       apt-get -y install sudo dialog apt-utils
+RUN sudo apt-get update && \
+    sudo apt-get -y install dialog apt-utils
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # Install unzip + rclone (support for remote filesystem)
