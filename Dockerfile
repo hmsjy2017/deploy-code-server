@@ -9,6 +9,11 @@ COPY deploy-container/settings.json .local/share/code-server/User/settings.json
 # Use bash shell
 ENV SHELL=/bin/bash
 
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \
+       apt-get -y install sudo dialog apt-utils
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
 # Install unzip + rclone (support for remote filesystem)
 RUN sudo apt-get update && sudo apt-get install unzip apt-utils -y
 RUN curl https://rclone.org/install.sh | sudo bash
