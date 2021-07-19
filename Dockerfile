@@ -9,13 +9,8 @@ COPY deploy-container/settings.json .local/share/code-server/User/settings.json
 # Use bash shell
 ENV SHELL=/bin/bash
 
-ARG DEBIAN_FRONTEND=noninteractive
-RUN sudo apt-get update && \
-    sudo apt-get -y install dialog apt-utils
-RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
-
 # Install unzip + rclone (support for remote filesystem)
-RUN sudo apt-get update && sudo apt-get install unzip apt-utils -y
+RUN sudo apt-get update && sudo apt-get install unzip wget -y
 RUN curl https://rclone.org/install.sh | sudo bash
 
 # Copy rclone tasks to /tmp, to potentially be used
@@ -32,7 +27,7 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # RUN code-server --install-extension esbenp.prettier-vscode
 
 # Install apt packages:
-RUN sudo apt-get install -y wget tar unzip net-tools neofetch dialog
+RUN sudo apt-get install -y neofetch
 
 # Copy files: 
 # COPY deploy-container/myTool /home/coder/myTool
